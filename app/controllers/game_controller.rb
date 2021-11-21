@@ -1,4 +1,4 @@
 class GameController < ApplicationController
-    def main
+    def top
     end
 end
