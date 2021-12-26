@@ -1,4 +1,5 @@
 %br
+= button_to "ランキング", "/ranking/show", method: :get, class: ""
 - if logged_in?
   = button_to "マイページ", @user, method: :get, class: ""
 - else
