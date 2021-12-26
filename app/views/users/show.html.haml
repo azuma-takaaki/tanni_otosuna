@@ -1,0 +1,9 @@
+%h1 this is show page
+- if @user
+  %div 
+    = @user.name
+  %div 
+    = @user.email
+  %br
+  = button_to "トップへ戻る", "/", method: :get
+  = button_to "ログアウトする", "/logout", method: :delete
