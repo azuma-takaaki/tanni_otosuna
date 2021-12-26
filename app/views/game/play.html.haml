@@ -1,3 +1,22 @@
 %h1
   これはゲーム画面です
+
+= form_for(:result, url: '/results/create') do |f|
+  
+  = f.label :tanni_point
+  = f.text_field :tanni_point, class: 'form-control'
+  
+  = f.label :love_point
+  = f.text_field :love_point, class: 'form-control'
+
+  = f.label :club_point
+  = f.text_field :club_point, class: 'form-control'
+
+  = f.label :business_point
+  = f.text_field :business_point, class: 'form-control'
+
+  = f.submit "ゲーム結果を送信する", class: "btn btn-primary"
+
+%br
+
 = button_to "トップへ戻る", "/", method: :get

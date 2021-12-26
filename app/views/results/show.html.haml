@@ -1,0 +1,17 @@
+%h1 This is show page of result!
+
+%div
+  単位: 
+  = @result.tanni_point
+%div
+  恋愛: 
+  = @result.love_point
+%div
+  サークル: 
+  = @result.club_point
+%div
+  就活: 
+  = @result.business_point
+%br
+
+= button_to "トップへ戻る", "/", method: :get
