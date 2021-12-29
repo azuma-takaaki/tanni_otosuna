@@ -1,36 +1,19 @@
 import * as React from 'react';
 import {useState, useEffect, useRef} from 'react';
-
-document.addEventListener('keydown', (event) => {
-    var keyName = event.key;
-
-    if (event.ctrlKey) {
-      console.log(`keydown:Ctrl + ${keyName}`);
-    } else if (event.shiftKey) {
-      console.log(`keydown:Shift + ${keyName}`);
-    } else {
-      console.log(`keydown:${keyName}`);
-    }
-  });
-
-  document.addEventListener('keypress', (event) => {
-    var keyName = event.key;
-
-    if (event.ctrlKey) {
-      console.log(`keypress:Ctrl + ${keyName}`);
-    } else if (event.shiftKey) {
-      console.log(`keypress:Shift + ${keyName}`);
-    } else {
-      console.log(`keypress:${keyName}`);
-    }
-  });
+import {ScreenManeger} from './ScreenManeger';
 
 const PlayScreen = ({})  => {
+  const count = 0;
+  let screenManeger;
+  let playerX = 0;
+  let playerY = 0;
   const [screenWidth, setScreenWidth] = useState<number>(400)
   const [screenHeight, setScreenHeight] = useState(600)
-  const [playerX, setPlayerX] = useState(0)
-  const [playerY, setPlayerY] = useState(0)
+  const [amountPlayerMove, setAmountPlayerMove] = useState(10)
   const canvasRef = useRef(null);
+  const player_image = new Image();
+  player_image.src = "/assets/player.png";
+  
 
   const getContext = (): CanvasRenderingContext2D => {
     const canvas: any = canvasRef.current;
@@ -40,37 +23,69 @@ const PlayScreen = ({})  => {
 
   useEffect(() => {
     const ctx: CanvasRenderingContext2D = getContext();
-    const player_image = new Image();
-    player_image.src = "/assets/player.png";
-    player_image.onload = () => {
-        ctx.drawImage(player_image, playerX, playerY)
-    };
+
     ctx.save();
+
+    const assets = {
+      player: "/assets/player.png"
+    };
+
+    screenManeger = new ScreenManeger({
+      canvas: canvasRef.current,
+      canvas_context: getContext(),
+      assets: assets,
+      fps: 30
+    })
+
+    console.log("useEffect() is called")
+    screenManeger.start()
   })
 
-  const movePlayer = (delta_x) => {
+
+
+  /*
+  const handleKeyDown = (event: KeyboardEvent) => {
+    const keyName = event.key;
+    if (keyName == "ArrowRight"){
+      movePlayer(amountPlayerMove)
+      console.log("ArrowRight");
+    }else if (keyName == "ArrowLeft"){
+      movePlayer(-amountPlayerMove)
+      console.log("ArrowLeft");
+    }
+  }
+
+  useEffect(() => {
     const ctx: CanvasRenderingContext2D = getContext();
-    const player_image = new Image();
-    player_image.src = "/assets/player.png";
     player_image.onload = () => {
         ctx.drawImage(player_image, playerX, playerY)
     };
     ctx.save();
-    setPlayerX(playerX + delta_x)
+    document.addEventListener('keydown', handleKeyDown, false)
+  }, [])
+
+  const movePlayer = (delta_x) => {
+    playerX += delta_x
+    const ctx: CanvasRenderingContext2D = getContext();
+    ctx.clearRect(0, 0, screenWidth, screenHeight);
+    addEventListener('load', function() {
+      ctx.drawImage(player_image, playerX, playerY)
+    }, false);
+    ctx.save();
   }
+  */
 
   return (
     <>
       <canvas className="canvas" ref={canvasRef} width={screenWidth} height={screenHeight}/>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick = {()=>movePlayer(-10)}
       >
           ←
       </button>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick = {()=>movePlayer(10)}
+        onClick={() => screenManeger.start()}
       >
           →
       </button>
