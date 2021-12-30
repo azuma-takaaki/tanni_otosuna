@@ -2,7 +2,7 @@ export class ScreenManeger {
   canvas
   fps
   ctx
-  assets
+  objects
   loadedAssets
   timer
   items
@@ -14,7 +14,7 @@ export class ScreenManeger {
     this.ctx = opt.canvas.getContext('2d');
     
     // アセット（画像ファイルなど）
-    this.assets = opt.assets;
+    this.objects = opt.objects;
     this.loadedAssets = {};
     
     // 描画速度（フレームレート）
@@ -28,9 +28,6 @@ export class ScreenManeger {
 
     // キーボード入力を保持する
     this.keyboard = '';
-
-    this.player_image = new Image();
-    this.player_image.src = "/assets/player.png";
   }
 
   async start() {
@@ -38,6 +35,10 @@ export class ScreenManeger {
     //await this.loadAssets();
     this.timer = setInterval(() => {
       console.log("timer() is called")
+      console.log(this.objects)
+      console.log(this.objects.player)
+      console.log(this.objects.player.image)
+      console.log(this.objects.player.image.src)
       this.render();
     }, 1000 / this.fps);
   }
@@ -63,7 +64,7 @@ export class ScreenManeger {
   render() {
     // Canvasをクリアする
     this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
-    this.ctx.drawImage(this.player_image, Math.floor( Math.random() * 100 ), 100)
+    this.ctx.drawImage(this.objects.player.image, Math.floor( Math.random() * 10 ), 100)
     this.items.forEach(a => {
       // オブジェクトを再描画する
       a.draw(this.ctx, this.loadedAssets);

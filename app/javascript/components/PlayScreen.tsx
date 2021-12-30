@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useState, useEffect, useRef} from 'react';
 import {ScreenManeger} from './ScreenManeger';
+import {Player} from './Player';
 
 const PlayScreen = ({})  => {
   const count = 0;
@@ -26,14 +27,14 @@ const PlayScreen = ({})  => {
 
     ctx.save();
 
-    const assets = {
-      player: "/assets/player.png"
+    const objects = {
+      player: new Player({x: 0, y:0, image_src: "/assets/player.png"})
     };
 
     screenManeger = new ScreenManeger({
       canvas: canvasRef.current,
       canvas_context: getContext(),
-      assets: assets,
+      objects: objects,
       fps: 30
     })
 
