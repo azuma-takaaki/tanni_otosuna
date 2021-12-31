@@ -3,18 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
-button {
-    font-size: 1rem;
-    background-color: #e6d900;
-    border-radius: 50%;
-    border-width: 0.2rem;
-    line-height: 100px;
-    width: 100px;
-    height: 100px;
-    padding: 0;
-    -webkit-box-shadow: 0 5px 0 #e6d900;
-    box-shadow: 0 5px 0 #e6d900;
-}
+
 .start-button, .how-to-button {
   font-size: 1rem;
   background-color: #e6d900;
@@ -32,12 +21,4 @@ button {
     -webkit-box-shadow: 0 2px 0 #e6d900;
     box-shadow: 0 2px 0 #e6d900;
   }
-}
-
-
-button:hover {
-    -webkit-transform: translate(0, 3px);
-    transform: translate(0, 3px);
-    -webkit-box-shadow: 0 2px 0 #e6d900;
-    box-shadow: 0 2px 0 #e6d900;
 }
