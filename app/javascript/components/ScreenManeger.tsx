@@ -28,19 +28,19 @@ export class ScreenManeger {
 
     // キーボード入力を保持する
     this.keyboard = '';
+    this.setEventListener();
   }
 
   async start() {
-    console.log("start() is called")
     //await this.loadAssets();
     this.timer = setInterval(() => {
-      console.log("timer() is called")
-      console.log(this.objects)
-      console.log(this.objects.player)
-      console.log(this.objects.player.image)
-      console.log(this.objects.player.image.src)
       this.render();
     }, 1000 / this.fps);
+  }
+
+  setEventListener() {
+    window.addEventListener('keydown', e => { this.keyboard = e.key });
+    window.addEventListener('keyup', e => { this.keyboard = '' });
   }
 
   /*
@@ -64,7 +64,8 @@ export class ScreenManeger {
   render() {
     // Canvasをクリアする
     this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
-    this.ctx.drawImage(this.objects.player.image, Math.floor( Math.random() * 10 ), 100)
+    this.ctx.drawImage(this.objects.player.image, this.objects.player.x, this.objects.player.y)
+    this.objects.player.update(this.keyboard);
     this.items.forEach(a => {
       // オブジェクトを再描画する
       a.draw(this.ctx, this.loadedAssets);

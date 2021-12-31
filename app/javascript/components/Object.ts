@@ -9,5 +9,4 @@ export class Object{
     this.image = new Image();
     this.image.src = params.image_src;
   }
-
 }
