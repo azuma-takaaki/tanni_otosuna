@@ -2,6 +2,7 @@ import * as React from 'react';
 import {useState, useEffect, useRef} from 'react';
 import {ScreenManeger} from './ScreenManeger';
 import {Player} from './Player';
+import { DropObject } from './DropObject';
 
 const PlayScreen = ({})  => {
   const count = 0;
@@ -28,7 +29,11 @@ const PlayScreen = ({})  => {
     ctx.save();
 
     const objects = {
-      player: new Player({x: 0, y:0, image_src: "/assets/player.png"})
+      player: new Player({x: 0, y:0, image_src: "/assets/player.png"}),
+      tanni: [new DropObject({x: 0, y: 0, type: "tanni"})],
+      love: [new DropObject({x: 30, y: 0, type: "love"})],
+      business: [new DropObject({x: 60, y: 0, type: "business"})],
+      club: [new DropObject({x: 90, y: 0, type: "club"})]
     };
 
     screenManeger = new ScreenManeger({
@@ -41,6 +46,10 @@ const PlayScreen = ({})  => {
     console.log("useEffect() is called")
     screenManeger.start()
   })
+
+  const addDropObject = (x: number, y:number, type: string) =>{
+    screenManeger.objects[type].push(new DropObject({x: x, y: y, type: type}))
+  }
 
 
 
@@ -89,6 +98,9 @@ const PlayScreen = ({})  => {
         onClick={() => screenManeger.start()}
       >
           →
+      </button>
+      <button onClick={()=> addDropObject(Math.floor( Math.random() * 100),0,"tanni")}>
+        追加！！！！
       </button>
     </>
   );
