@@ -43,6 +43,21 @@ export class ScreenManeger {
     window.addEventListener('keyup', e => { this.keyboard = '' });
   }
 
+  update_objects(){
+    for (let key in this.objects) {
+      if (key == 'player'){
+        const p = this.objects[key]
+        p.update(this.keyboard);
+        this.ctx.drawImage(p.image, p.x, p.y)
+      }else{
+        for(const obj of this.objects[key]){
+          obj.update();
+          this.ctx.drawImage(obj.image, obj.x, obj.y)
+        }
+      }
+    }
+  }
+
   /*
   async loadAssets() {
     const promises = Object.keys(this.assets).map(asset => {
@@ -64,8 +79,8 @@ export class ScreenManeger {
   render() {
     // Canvasをクリアする
     this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
-    this.ctx.drawImage(this.objects.player.image, this.objects.player.x, this.objects.player.y)
-    this.objects.player.update(this.keyboard);
+  
+    this.update_objects()
     this.items.forEach(a => {
       // オブジェクトを再描画する
       a.draw(this.ctx, this.loadedAssets);
