@@ -1,15 +1,32 @@
 export class Player{
   public x: number;
   public y: number;
-  public image: HTMLImageElement;
+  public image: any;
   public name: string;
+  public width: number;
+  public height: number;
   constructor(params){
     this.x = params.x;
     this.y = params.y;
-    this.image = new Image();
-    this.image.src = params.image_src;
+    this.loadImage(params.image_src)
+    .then((img)=>{
+      this.image = img;
+      this.width = img.width;
+      this.height = img.height;
+    })
+
     this.name = params.name ? params.name : "私文大学生くん";
   }
+
+  async loadImage(image_url){
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = (e) => reject(e);
+      img.src = image_url;
+    });
+  }
+
 
   update(keyboard) {
     // ここでキーボード操作により座標を変更する

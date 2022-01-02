@@ -48,7 +48,7 @@ export class ScreenManeger {
       if (key == 'player'){
         const p = this.objects[key]
         p.update(this.keyboard);
-        this.ctx.drawImage(p.image, p.x, p.y)
+        this.ctx.drawImage(p.image, p.x, p.y, p.width, p.height)
       }else{
         for(const obj of this.objects[key]){
           obj.update();
