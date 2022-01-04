@@ -5,11 +5,13 @@ export class Player{
   public name: string;
   public width: number;
   public height: number;
+  public reduction_ratio: number;
   constructor(params){
     this.x = params.x;
     this.y = params.y;
+    this.reduction_ratio = params.reduction_ratio;
     this.loadImage(params.image_src)
-    .then((img)=>{
+    .then((img: HTMLImageElement)=>{
       this.image = img;
       this.width = img.width;
       this.height = img.height;

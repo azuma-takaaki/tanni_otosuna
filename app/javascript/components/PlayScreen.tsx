@@ -9,8 +9,8 @@ const PlayScreen = ({})  => {
   let screenManeger;
   let playerX = 0;
   let playerY = 0;
-  const [screenWidth, setScreenWidth] = useState<number>(400)
-  const [screenHeight, setScreenHeight] = useState(600)
+  const screen_width = 400;
+  const screen_height = 600;
   const [amountPlayerMove, setAmountPlayerMove] = useState(10)
   const canvasRef = useRef(null);
   const player_image = new Image();
@@ -29,7 +29,7 @@ const PlayScreen = ({})  => {
     ctx.save();
 
     const objects = {
-      player: new Player({x: 0, y:0, image_src: "/assets/player.png"}),
+      player: new Player({x: 0, y:0, reduction_ratio: 0.2, image_src: "/assets/player.png"}),
       tanni: [new DropObject({x: 0, y: 0, type: "tanni"})],
       love: [new DropObject({x: 30, y: 0, type: "love"})],
       business: [new DropObject({x: 60, y: 0, type: "business"})],
@@ -87,7 +87,7 @@ const PlayScreen = ({})  => {
 
   return (
     <>
-      <canvas className="canvas" ref={canvasRef} width={screenWidth} height={screenHeight}/>
+      <canvas className="canvas" ref={canvasRef} width={screen_width} height={screen_height}/>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
