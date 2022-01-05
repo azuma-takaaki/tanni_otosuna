@@ -55,8 +55,10 @@ export class ScreenManeger {
         this.ctx.drawImage(p.image, p_x, p_y, p_w , p_h)
       }else{
         for(const obj of this.objects[key]){
+          const obj_w = obj.width * obj.reduction_ratio;
+          const obj_h = obj.height * obj.reduction_ratio;
           obj.update();
-          this.ctx.drawImage(obj.image, obj.x, obj.y)
+          this.ctx.drawImage(obj.image, obj.x, obj.y, obj_w , obj_h)
         }
       }
     }
