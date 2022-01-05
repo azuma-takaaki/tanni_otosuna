@@ -1,35 +1,51 @@
 export class DropObject{
   public x: number;
   public y: number;
-  public image: HTMLImageElement;
+  public image: any;
   public name: string;
+  public width: number;
+  public height: number;
+  public reduction_ratio: number;
   public drop_speed: number;
   constructor(params){
     this.x = params.x;
     this.y = params.y;
     this.drop_speed = params.drop_speed ? params.drop_speed : 5;
-    this.image = new Image();
-    switch (params.type){
-      case "tanni":
-        this.image.src = "/assets/tanni.png";
-        break;
-      case "love":
-        this.image.src = "/assets/love.png";
-        break;
-      case "business":
-        this.image.src = "/assets/business.png"
-        break;
-      case "club":
-        this.image.src = "/assets/club.png"
-        break;
-      default:
-        this.image.src = "/assets/tanni.png";
-        break;
-    }
+    this.reduction_ratio = params.reduction_ratio;
+    this.loadImage(params.type)
+    .then((img: HTMLImageElement)=>{
+      this.image = img;
+      this.width = img.width;
+      this.height = img.height;
+    })
+  }
+
+  async loadImage(type){
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = (e) => reject(e);
+      switch (type){
+        case "tanni":
+          img.src = "/assets/tanni.png";
+          break;
+        case "love":
+          img.src = "/assets/love.png";
+          break;
+        case "business":
+          img.src = "/assets/business.png"
+          break;
+        case "club":
+          img.src = "/assets/club.png"
+          break;
+        default:
+          img.src = "/assets/tanni.png";
+          break;
+      }
+    });
   }
 
   update() {
     this.y += this.drop_speed;
   }
 }
-
