@@ -45,9 +45,29 @@ const PlayScreen = ({})  => {
 
     console.log("useEffect() is called")
     screenManeger.start()
+
+    setInterval(() => {addDropObject(0,0,"tanni")}, 500);
   })
 
-  const addDropObject = (x: number, y:number, type: string) =>{
+  const addDropObject = (x: number, y:number, type: string):any =>{
+    x = Math.floor( Math.random() * screen_width)
+
+    switch (Math.floor( Math.random() * 4)) {
+      case 0:
+        type = "tanni";
+        break;
+      case 1:
+        type = "love";
+        break;
+      case 2:
+        type = "business";
+        break;
+      case 3:
+        type = "club";
+        break;
+      default:
+        break;
+    }
     screenManeger.objects[type].push(new DropObject({x: x, y: y, reduction_ratio: 0.2, type: type}))
   }
 
