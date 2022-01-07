@@ -27,13 +27,21 @@ const PlayScreen = ({})  => {
     const ctx: CanvasRenderingContext2D = getContext();
 
     ctx.save();
-
+    /*
     const objects = {
       player: new Player({x: 0, y:0, reduction_ratio: 0.2, image_src: "/assets/player.png"}),
       tanni: [new DropObject({x: 0, y: 0, reduction_ratio: 0.2, type: "tanni"})],
       love: [new DropObject({x: 50, y: 0, reduction_ratio: 0.2, type: "love"})],
       business: [new DropObject({x: 100, y: 0, reduction_ratio: 0.2, type: "business"})],
       club: [new DropObject({x: 150, y: 0, reduction_ratio: 0.2, type: "club"})]
+    };
+    */
+    const objects = {
+      player: new Player({x: 0, y:0, reduction_ratio: 0.2, image_src: "/assets/player.png"}),
+      tanni: [new DropObject({x: 0, y: 0, reduction_ratio: 0.2, type: "tanni"})],
+      love: [],
+      business: [],
+      club: []
     };
 
     screenManeger = new ScreenManeger({
