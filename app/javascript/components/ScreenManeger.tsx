@@ -47,21 +47,27 @@ export class ScreenManeger {
     for (let key in this.objects) {
       if (key == 'player'){
         const p = this.objects[key];
-        const p_x = p.x;
-        const p_y = this.canvas.height - p.height * p.reduction_ratio;
-        const p_w = p.width * p.reduction_ratio;
-        const p_h = p.height * p.reduction_ratio;
+        p.y = this.canvas.height - p.height;
         p.update(this.keyboard);
-        this.ctx.drawImage(p.image, p_x, p_y, p_w , p_h)
+        this.ctx.drawImage(p.image, p.x, p.y, p.width , p.height)
       }else{
-        for(const obj of this.objects[key]){
-          const obj_w = obj.width * obj.reduction_ratio;
-          const obj_h = obj.height * obj.reduction_ratio;
+        for(let i  in this.objects[key]){
+          const obj = this.objects[key][i]
           obj.update();
-          this.ctx.drawImage(obj.image, obj.x, obj.y, obj_w , obj_h)
+          this.ctx.drawImage(obj.image, obj.x, obj.y, obj.width , obj.height)
+          if(this.detectRectangleCollision(this.objects["player"], obj)){
+            this.objects[key].splice(i,1)
+          }
         }
       }
     }
+  }
+
+  detectRectangleCollision(rect1, rect2) {
+    const horizontal = (rect2.left < rect1.right) && (rect1.left < rect2.right);
+    const vertical = (rect2.top < rect1.bottom) && (rect1.top < rect2.bottom);
+
+    return (horizontal && vertical);
   }
 
   /*

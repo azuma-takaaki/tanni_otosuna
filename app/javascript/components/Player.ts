@@ -13,12 +13,17 @@ export class Player{
     this.loadImage(params.image_src)
     .then((img: HTMLImageElement)=>{
       this.image = img;
-      this.width = img.width;
-      this.height = img.height;
+      this.width = img.width * this.reduction_ratio;
+      this.height = img.height * this.reduction_ratio;
     })
 
     this.name = params.name ? params.name : "私文大学生くん";
   }
+
+  get top() { return this.y; }
+  get bottom() { return this.y + this.height; }
+  get left() { return this.x; }
+  get right() { return this.x + this.width; }
 
   async loadImage(image_url){
     return new Promise((resolve, reject) => {

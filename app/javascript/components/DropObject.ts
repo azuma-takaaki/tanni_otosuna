@@ -15,10 +15,15 @@ export class DropObject{
     this.loadImage(params.type)
     .then((img: HTMLImageElement)=>{
       this.image = img;
-      this.width = img.width;
-      this.height = img.height;
+      this.width = img.width * this.reduction_ratio;
+      this.height = img.height * this.reduction_ratio;
     })
   }
+
+  get top() { return this.y; }
+  get bottom() { return this.y + this.height; }
+  get left() { return this.x; }
+  get right() { return this.x + this.width; }
 
   async loadImage(type){
     return new Promise((resolve, reject) => {
