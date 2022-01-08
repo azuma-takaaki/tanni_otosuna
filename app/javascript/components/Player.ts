@@ -1,14 +1,9 @@
-export class Player{
-  public x: number;
-  public y: number;
-  public image: any;
+import SuperObject from './Object';
+
+export class Player extends SuperObject{
   public name: string;
-  public width: number;
-  public height: number;
-  public reduction_ratio: number;
   constructor(params){
-    this.x = params.x;
-    this.y = params.y;
+    super(params)
     this.reduction_ratio = params.reduction_ratio;
     this.loadImage(params.image_src)
     .then((img: HTMLImageElement)=>{
