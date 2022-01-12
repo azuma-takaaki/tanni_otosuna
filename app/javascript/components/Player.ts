@@ -2,8 +2,16 @@ import SuperObject from './Object';
 
 export class Player extends SuperObject{
   public name: string;
+  public tanni_point: number;
+  public love_point: number;
+  public business_point: number;
+  public club_point: number;
   constructor(params){
     super(params)
+    this.tanni_point = 0;
+    this.love_point = 0;
+    this.business_point = 0;
+    this.club_point = 0;
     this.reduction_ratio = params.reduction_ratio;
     this.loadImage(params.image_src)
     .then((img: HTMLImageElement)=>{

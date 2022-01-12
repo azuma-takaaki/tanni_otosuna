@@ -56,12 +56,14 @@ export class ScreenManeger {
           obj.update();
           this.ctx.drawImage(obj.image, obj.x, obj.y, obj.width , obj.height)
           if(this.detectRectangleCollision(this.objects["player"], obj)){
+            this.add_score(key)
             this.objects[key].splice(i,1)
           }
         }
       }
     }
   }
+
 
   detectRectangleCollision(rect1, rect2) {
     const horizontal = (rect2.left < rect1.right) && (rect1.left < rect2.right);
@@ -70,6 +72,10 @@ export class ScreenManeger {
     return (horizontal && vertical);
   }
 
+  add_score(drop_object_type){
+    let score = document.getElementById(drop_object_type + "_score");
+    score.innerHTML = String(Number(score.innerHTML) + 1);
+  }
   /*
   async loadAssets() {
     const promises = Object.keys(this.assets).map(asset => {
