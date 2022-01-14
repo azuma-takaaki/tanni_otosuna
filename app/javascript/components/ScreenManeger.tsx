@@ -8,6 +8,10 @@ export class ScreenManeger {
   items
   keyboard
   player_image
+  tanni_score 
+  love_score
+  business_score
+  club_score
   constructor(opt){
     this.canvas = opt.canvas;
     // 描画用コンテキスト
@@ -29,6 +33,11 @@ export class ScreenManeger {
     // キーボード入力を保持する
     this.keyboard = '';
     this.setEventListener();
+
+    this.tanni_score = 0;
+    this.love_score = 0;
+    this.business_score = 0;
+    this.club_score = 0;
   }
 
   async start() {
@@ -74,7 +83,24 @@ export class ScreenManeger {
 
   add_score(drop_object_type){
     let score = document.getElementById(drop_object_type + "_score");
-    score.innerHTML = String(Number(score.innerHTML) + 1);
+    switch (drop_object_type) {
+      case 'tanni':
+        this.tanni_score += 1;
+        score.innerHTML = this.tanni_score;
+        break;
+      case 'love':
+        this.love_score += 1;
+        score.innerHTML = this.love_score;
+        break;
+      case 'business':
+        this.business_score += 1;
+        score.innerHTML = this.business_score;
+        break;
+      case 'club':
+        this.club_score += 1;
+        score.innerHTML = this.club_score;
+        break;
+    }
   }
   /*
   async loadAssets() {

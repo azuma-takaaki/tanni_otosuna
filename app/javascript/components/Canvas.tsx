@@ -4,7 +4,7 @@ import {ScreenManeger} from './ScreenManeger';
 import {Player} from './Player';
 import { DropObject } from './DropObject';
 
-const Canvas = ({props})  => {
+const Canvas = ({c_ref})  => {
   let player: any;
   const [tanniPoint, setTanniPoint] = useState(100);
   let count = 0;
@@ -18,6 +18,39 @@ const Canvas = ({props})  => {
   const player_image = new Image();
   player_image.src = "/assets/player.png";
   
+  c_ref.current = {
+		postResult: () => {
+      const data = {"result":
+                        {
+                          "tanni_point": screenManeger.tanni_score,
+                          "love_point": screenManeger.love_score,
+                          "club_point": screenManeger.club_score,
+                          "business_point": screenManeger.business_score
+                        }
+                    }
+      const getCsrfToken = () => {
+        const metas = document.getElementsByTagName('meta');
+        const token = metas[3].getAttribute('content')
+        return token
+      }
+      fetch('/results/create', {
+        method: 'POST',
+        credentials: 'same-origin',
+        redirect: 'follow',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': getCsrfToken()
+        },
+        body: JSON.stringify(data)
+      }).then(response => response.json())
+      .then(data => {
+        console.log(data)
+        console.log(Object.keys(data))
+        console.log(data["status"])
+        location.href="/results/" + data["result_id"];
+      })
+    }
+	}
 
   const getContext = (): CanvasRenderingContext2D => {
     const canvas: any = canvasRef.current;
