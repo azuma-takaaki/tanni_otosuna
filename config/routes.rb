@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'game#top'
+  get '/results/:id', to: 'results#show'
   post '/results/create', to: 'results#create'
   get '/sessions/new', to: 'sessions#new'
   get '/play', to: 'game#play'

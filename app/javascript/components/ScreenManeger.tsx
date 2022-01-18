@@ -8,31 +8,33 @@ export class ScreenManeger {
   items
   keyboard
   player_image
+  tanni_score 
+  love_score
+  business_score
+  club_score
   constructor(opt){
     this.canvas = opt.canvas;
-    // 描画用コンテキスト
     this.ctx = opt.canvas.getContext('2d');
     
-    // アセット（画像ファイルなど）
     this.objects = opt.objects;
     this.loadedAssets = {};
     
-    // 描画速度（フレームレート）
     this.fps = opt.fps || 30;
 
-    // 無限ループ用のtimer（start・stop時に使用）
     this.timer;
 
-    // Canvasに描画するオブジェクトリスト
     this.items = [];
 
-    // キーボード入力を保持する
     this.keyboard = '';
     this.setEventListener();
+
+    this.tanni_score = 0;
+    this.love_score = 0;
+    this.business_score = 0;
+    this.club_score = 0;
   }
 
   async start() {
-    //await this.loadAssets();
     this.timer = setInterval(() => {
       this.render();
     }, 1000 / this.fps);
@@ -74,35 +76,32 @@ export class ScreenManeger {
 
   add_score(drop_object_type){
     let score = document.getElementById(drop_object_type + "_score");
-    score.innerHTML = String(Number(score.innerHTML) + 1);
+    switch (drop_object_type) {
+      case 'tanni':
+        this.tanni_score += 1;
+        score.innerHTML = this.tanni_score;
+        break;
+      case 'love':
+        this.love_score += 1;
+        score.innerHTML = this.love_score;
+        break;
+      case 'business':
+        this.business_score += 1;
+        score.innerHTML = this.business_score;
+        break;
+      case 'club':
+        this.club_score += 1;
+        score.innerHTML = this.club_score;
+        break;
+    }
   }
-  /*
-  async loadAssets() {
-    const promises = Object.keys(this.assets).map(asset => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => { resolve }
-        img.onerror = err => { reject(err); }
-        img.src = this.assets[asset];
-        this.loadedAssets[asset] = img;
-      });
-    });
-
-    return Promise.all(promises);
-  }
-  */
-  /**
-   * Canvasをクリアし、オブジェクトを再描画する
-   */
+  
   render() {
-    // Canvasをクリアする
     this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
   
     this.update_objects()
     this.items.forEach(a => {
-      // オブジェクトを再描画する
       a.draw(this.ctx, this.loadedAssets);
-      // オブジェクトの状態を変更する
       a.update(this.keyboard);
     })
 

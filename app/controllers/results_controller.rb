@@ -2,12 +2,15 @@ class ResultsController < ApplicationController
   def create
     @result = Result.new(result_params)
     if @result.save!
-      render "show"
+      render json: { status: 200, result_id: @result.id }
     else
       redirect_to root_url
     end
   end
 
+  def show
+    @result = Result.find(params[:id])
+  end
   private
     
     def result_params
