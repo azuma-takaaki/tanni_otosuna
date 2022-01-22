@@ -28,10 +28,10 @@ export class ScreenManeger {
     this.keyboard = '';
     this.setEventListener();
 
-    this.tanni_score = 0;
-    this.love_score = 0;
+    this.tanni_score    = 0;
+    this.love_score     = 0;
     this.business_score = 0;
-    this.club_score = 0;
+    this.club_score     = 0;
   }
 
   async start() {
@@ -76,21 +76,22 @@ export class ScreenManeger {
 
   add_score(drop_object_type){
     let score = document.getElementById(drop_object_type + "_score");
+    let score_add_point = 20
     switch (drop_object_type) {
       case 'tanni':
-        this.tanni_score += 1;
+        this.tanni_score += score_add_point;
         score.innerHTML = this.tanni_score;
         break;
       case 'love':
-        this.love_score += 1;
+        this.love_score += score_add_point;
         score.innerHTML = this.love_score;
         break;
       case 'business':
-        this.business_score += 1;
+        this.business_score += score_add_point;
         score.innerHTML = this.business_score;
         break;
       case 'club':
-        this.club_score += 1;
+        this.club_score += score_add_point;
         score.innerHTML = this.club_score;
         break;
     }
