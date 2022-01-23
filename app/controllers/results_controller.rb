@@ -1,6 +1,8 @@
 class ResultsController < ApplicationController
   def create
     @result = Result.new(result_params)
+    @result.user = current_user if current_user
+    @result.title = get_title(@result)
     if @result.save!
       render json: { status: 200, result_id: @result.id }
     else
@@ -10,7 +12,6 @@ class ResultsController < ApplicationController
 
   def show
     @result = Result.find(params[:id])
-    @title = get_title(@result)
   end
 
   private
