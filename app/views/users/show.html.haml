@@ -7,3 +7,7 @@
   %br
   = button_to "トップへ戻る", "/", method: :get
   = button_to "ログアウトする", "/logout", method: :delete
+
+- @title_list.each do |t|
+  %div
+    = t[:name]
