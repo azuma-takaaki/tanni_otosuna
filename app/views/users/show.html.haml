@@ -11,3 +11,5 @@
 - @title_list.each do |t|
   %div
     = t[:name]
+    %span :
+    = @user.results.find_all {|r| r.title == t[:name]}.length
