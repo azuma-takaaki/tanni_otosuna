@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+/* 
+↓使用する配色
+https://colorhunt.co/palette/96ceb4ffeeadd9534fffad60
+ */
+
+:root {
+    --custom-color1: #96CEB4;
+    --custom-color2: #FFEEAD;
+    --custom-color3: #D9534F;
+    --custom-color4: #FFAD60;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--custom-color1);
+}

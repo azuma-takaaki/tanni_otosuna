@@ -1,15 +1,12 @@
-%br
-= button_to "ランキング", "/ranking/show", method: :get, class: ""
-- if logged_in?
-  = button_to "マイページ", @user, method: :get, class: ""
-- else
-  = button_to "新規登録", "/users/new", method: :get, class: ""
-  = button_to "ログイン", "/sessions/new", method: :get, class: ""
+%div.top_content_wrapper
+  %div 
+  = button_to "ランキング", "/ranking/show", method: :get, class: ""
+  - if logged_in?
+    = button_to "マイページ", @user, method: :get, class: ""
+  - else
+    = button_to "新規登録", "/users/new", method: :get, class: ""
+    = button_to "ログイン", "/sessions/new", method: :get, class: ""
+  %div.title 単位落とすな
+  = button_to "スタート", "/play", method: :get, class: "start-button"
+  = button_to "遊び方", "/play", method: :get, class: "how-to-button"
 
-
-%h1 単位落とすな
-= button_to "スタート", "/play", method: :get, class: "start-button"
-= button_to "遊び方", "/play", method: :get, class: "how-to-button"
-
-%p{class: "text-red-500 text-9xl"}
-  hello

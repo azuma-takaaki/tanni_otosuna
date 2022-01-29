@@ -1,0 +1,19 @@
+// Place all the styles related to the Game controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.top_content_wrapper{
+  margin: auto;
+  height: 50%;
+  width: 70%;
+  background-color: var(--custom-color2);
+  .title {
+    font-size: 3rem;
+    color: var(--custom-color3);
+  }
+  .start-button, .how-to-button {
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    background-color: var(--custom-color4);
+  }
+}
