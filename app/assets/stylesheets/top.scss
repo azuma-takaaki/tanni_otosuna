@@ -1,0 +1,47 @@
+// Place all the styles related to the Game controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.top-content-wrapper{
+  margin: auto;
+  text-align: center;
+  height: 50%;
+  width: 70%;
+  background-color: var(--custom-color2);
+
+  .buttons-above-title-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    .buttons-above-title{
+      margin: 1rem 0.2rem;
+      border-radius: 0.3rem;
+      border: none;
+      background-color: var(--custom-color4);
+      transition: .3s;
+      &:hover {
+        color: var(--custom-color3);
+        background-color: #fff;
+      }
+    }
+  }
+  .title {
+    margin: 2rem 0 0 0;
+    font-size: 3rem;
+    color: var(--custom-color3);
+  }
+  .start-button, .how-to-button {
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--custom-color4);
+    transition: .3s;
+      &:hover {
+        color: var(--custom-color3);
+        background-color: #fff;
+      }
+  }
+
+  .start-button {
+    margin: 3rem 0 1rem 0;
+  }
+}
