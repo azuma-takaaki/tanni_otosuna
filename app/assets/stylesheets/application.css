@@ -27,6 +27,12 @@ https://colorhunt.co/palette/96ceb4ffeeadd9534fffad60
 }
 
 body {
+  font-family: "游教科書体 横用","YuKyokasho Yoko";
   height: 100vh;
   background-color: var(--custom-color1);
+}
+
+button, input, select, textarea {
+  font-family : inherit;
+  font-size   : 100%;
 }
