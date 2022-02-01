@@ -109,20 +109,6 @@ const Canvas = ({c_ref})  => {
   return (
     <>
       <canvas className="canvas" ref={canvasRef} width={screen_width} height={screen_height}/>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-          ←
-      </button>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={() => screenManeger.start()}
-      >
-          →
-      </button>
-      <button onClick={()=> addDropObject(Math.floor( Math.random() * 400),0,"tanni")}>
-        追加！！！！
-      </button>
     </>
   );
 };
