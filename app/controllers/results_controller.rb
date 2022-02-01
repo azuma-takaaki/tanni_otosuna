@@ -1,8 +1,11 @@
 class ResultsController < ApplicationController
+  require 'securerandom'
+
   def create
     @result = Result.new(result_params)
     @result.user = current_user if current_user
     @result.title = get_title(@result)
+    @result.uid = SecureRandom.uuid
     if @result.save!
       render json: { status: 200, result_id: @result.id }
     else

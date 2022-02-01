@@ -1,5 +1,11 @@
 %h1 This is show page of result!
 
+%div.buttons-above-title-wrapper
+  - unless logged_in?
+    = button_to "新規登録", new_user_path, { method: :get, params: {result_uid: @result.uid} }
+    %span または
+    = button_to "ログイン", sessions_new_path, { method: :get, params: {result_uid: @result.uid} }
+    %span してこの結果を保存しましょう！
 %h2
   称号:
   = @result.title
