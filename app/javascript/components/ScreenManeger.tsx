@@ -75,24 +75,29 @@ export class ScreenManeger {
   }
 
   add_score(drop_object_type){
-    let score = document.getElementById(drop_object_type + "_score");
+    let score_point = document.getElementById(drop_object_type + "_score");
+    let score_gauge = document.getElementById(drop_object_type + "_gauge");
     let score_add_point = 20
     switch (drop_object_type) {
       case 'tanni':
         this.tanni_score += score_add_point;
-        score.innerHTML = this.tanni_score;
+        score_point.innerHTML = this.tanni_score;
+        score_gauge.style.width = this.tanni_score + "px";
         break;
       case 'love':
         this.love_score += score_add_point;
-        score.innerHTML = this.love_score;
+        score_point.innerHTML = this.love_score;
+        score_gauge.style.width = this.love_score + "px";
         break;
       case 'business':
         this.business_score += score_add_point;
-        score.innerHTML = this.business_score;
+        score_point.innerHTML = this.business_score;
+        score_gauge.style.width = this.business_score + "px";
         break;
       case 'club':
         this.club_score += score_add_point;
-        score.innerHTML = this.club_score;
+        score_point.innerHTML = this.club_score;
+        score_gauge.style.width = this.club_score + "px";
         break;
     }
   }

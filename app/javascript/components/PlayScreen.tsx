@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {useState, useEffect, useRef} from 'react';
-import {ScreenManeger} from './ScreenManeger';
-import {Player} from './Player';
-import { DropObject } from './DropObject';
+import { useRef } from 'react';
+import PointGauge  from './PointGauge';
 import  Canvas  from './Canvas';
 
 const PlayScreen = ({})  => {
@@ -19,10 +17,10 @@ const PlayScreen = ({})  => {
   return (
     <>
       <div>制限時間: <span id="time_limit">20</span></div>
-      <div>単位: <span id="tanni_score">0</span></div >
-      <div>恋愛: <span id="love_score">0</span></div>
-      <div>就活: <span id="business_score">0</span></div>
-      <div>友情: <span id="club_score">0</span></div>
+      <PointGauge type="tanni"/>
+      <PointGauge type="love"/>
+      <PointGauge type="business"/>
+      <PointGauge type="club"/>
       <Canvas
         c_ref = {ref}
       />
