@@ -4,16 +4,10 @@ import {ScreenManeger} from './ScreenManeger';
 import {Player} from './Player';
 import { DropObject } from './DropObject';
 
-const Canvas = ({c_ref})  => {
+const Canvas = ({c_ref, screen_width, screen_height})  => {
   let player: any;
   const [tanniPoint, setTanniPoint] = useState(100);
-  let count = 0;
   let screenManeger;
-  let playerX = 0;
-  let playerY = 0;
-  const screen_width = 400;
-  const screen_height = 600;
-  const [amountPlayerMove, setAmountPlayerMove] = useState(10)
   const canvasRef = useRef(null);
   const player_image = new Image();
   player_image.src = "/assets/player.png";
