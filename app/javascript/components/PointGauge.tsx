@@ -3,6 +3,7 @@ import { FC } from 'react';
 
 interface Type {
   type: string;
+  point?: number;
 }
 
 const progress_back_style =
@@ -13,7 +14,7 @@ const progress_back_style =
     position: "relative",
   } as React.CSSProperties;
 
-const progress_front_style =
+let progress_front_style =
   {
     width: "0%",
     height: "2rem",
@@ -26,7 +27,6 @@ const progress_front_style =
   } as React.CSSProperties;
 
 const PointGauge: FC<Type> = (props)  => {
-
   let gauge_color = "";
   let gauge_type = "";
   if (props.type == "tanni") {
@@ -43,12 +43,16 @@ const PointGauge: FC<Type> = (props)  => {
     gauge_type = "サークル"
   }
 
+  if (props.point) {
+    progress_front_style["width"] = props.point + "px"
+  }
+
   return (
     <>
       <div className="gauge_wrapper">
           <div className="progress_back" style={progress_back_style}>
             <div className="progress_front" id={props.type + "_gauge"} style={{...progress_front_style, "backgroundColor": gauge_color}}></div>
-            <div style={{"position": "absolute"}}>{gauge_type}: <span id={props.type + "_score"}>0</span></div>
+            <div style={{"position": "absolute"}}>{gauge_type}: <span id={props.type + "_score"}>{props.point ? props.point : "0"}</span></div>
           </div>
       </div>
     </>
