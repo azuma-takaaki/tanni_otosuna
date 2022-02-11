@@ -1,5 +1,9 @@
 %h1 This is show page of result!
 
+= react_component("PointGauge", { type: "tanni", point: @result.tanni_point})
+= react_component("PointGauge", { type: "love", point: @result.love_point})
+= react_component("PointGauge", { type: "business", point: @result.business_point})
+= react_component("PointGauge", { type: "club", point: @result.club_point})
 %div.buttons-above-title-wrapper
   - unless logged_in?
     = button_to "新規登録", new_user_path, { method: :get, params: {result_uid: @result.uid} }
@@ -7,12 +11,7 @@
     = button_to "ログイン", sessions_new_path, { method: :get, params: {result_uid: @result.uid} }
     %span してこの結果を保存しましょう！
 %h2
-  称号:
   = @result.title
-= react_component("PointGauge", { type: "tanni", point: @result.tanni_point})
-= react_component("PointGauge", { type: "love", point: @result.love_point})
-= react_component("PointGauge", { type: "business", point: @result.business_point})
-= react_component("PointGauge", { type: "club", point: @result.club_point})
 %br
 
 = button_to "トップへ戻る", "/", method: :get
