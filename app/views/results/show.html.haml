@@ -13,5 +13,7 @@
 %h2
   = @result.title
 %br
+%div
+  = image_tag @image_path, size: '320'
 
 = button_to "トップへ戻る", "/", method: :get

@@ -8,6 +8,7 @@ module GameHelper
         love_range:     [1, 99],
         business_range: [0, infinite],
         club_range:     [0, infinite],
+        image_path: 'neet.png',
       },
       {
         name: "ニート",
@@ -15,6 +16,7 @@ module GameHelper
         love_range:     [0, 0],
         business_range: [0, infinite],
         club_range:     [0, infinite],
+        image_path: 'neet.png',
       },
       {
         name: "ヒモ",
@@ -22,6 +24,7 @@ module GameHelper
         love_range:     [100, infinite],
         business_range: [0, 49],
         club_range:     [0, infinite],
+        image_path: 'neet.png',
       },
       {
         name: "就職浪人",
@@ -29,6 +32,7 @@ module GameHelper
         love_range:     [100, infinite],
         business_range: [50, infinite],
         club_range:     [0, infinite],
+        image_path: 'neet.png',
       },
       {
         name: "サラリーマン",
@@ -36,6 +40,7 @@ module GameHelper
         love_range:     [0, infinite],
         business_range: [0, 99],
         club_range:     [0, infinite],
+        image_path: 'neet.png',
       },
       {
         name: "一流サラリーマン",
@@ -43,6 +48,7 @@ module GameHelper
         love_range:     [0, infinite],
         business_range: [100, infinite],
         club_range:     [0, infinite],
+        image_path: 'neet.png',
       },
       # {
       #   name: "一流サラリーマン",
