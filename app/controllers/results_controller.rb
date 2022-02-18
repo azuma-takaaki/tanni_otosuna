@@ -18,6 +18,7 @@ class ResultsController < ApplicationController
     @result = Result.find(params[:id])
     title_info = get_title_info(@result)
     @image_path = title_info[:image_path]
+    @character_words = title_info[:character_words]
   end
 
   private

@@ -8,7 +8,8 @@ module GameHelper
         love_range:     [1, 99],
         business_range: [0, infinite],
         club_range:     [0, infinite],
-        image_path: 'neet.png',
+        image_path: "retention.png",
+        character_words: "もう一年遊べるわぁ",
       },
       {
         name: "ニート",
@@ -16,7 +17,8 @@ module GameHelper
         love_range:     [0, 0],
         business_range: [0, infinite],
         club_range:     [0, infinite],
-        image_path: 'neet.png',
+        image_path: "neet.png",
+        character_words: "有産階級の仲間入りですわwww",
       },
       {
         name: "ヒモ",
@@ -24,7 +26,8 @@ module GameHelper
         love_range:     [100, infinite],
         business_range: [0, 49],
         club_range:     [0, infinite],
-        image_path: 'neet.png',
+        image_path: "himo.png",
+        character_words: "俺と付き合えるとか幸せだよなあ。",
       },
       {
         name: "就職浪人",
@@ -32,7 +35,8 @@ module GameHelper
         love_range:     [100, infinite],
         business_range: [50, infinite],
         club_range:     [0, infinite],
-        image_path: 'neet.png',
+        image_path: "ronin.png",
+        character_words: "彼女のためにも良い会社に入るぞ！！！",
       },
       {
         name: "サラリーマン",
@@ -40,7 +44,8 @@ module GameHelper
         love_range:     [0, infinite],
         business_range: [0, 99],
         club_range:     [0, infinite],
-        image_path: 'neet.png',
+        image_path: "businessman.png",
+        character_words: "宝くじでも買おうかな",
       },
       {
         name: "一流サラリーマン",
@@ -48,7 +53,8 @@ module GameHelper
         love_range:     [0, infinite],
         business_range: [100, infinite],
         club_range:     [0, infinite],
-        image_path: 'neet.png',
+        image_path: "businessman_macho.png",
+        character_words: "お前らとはレベルが違うんだよなあwww",
       },
       # {
       #   name: "一流サラリーマン",
