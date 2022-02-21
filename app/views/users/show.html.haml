@@ -10,6 +10,13 @@
 
 - @title_list.each do |t|
   %div
-    = t[:name]
-    %span :
-    = @user.results.find_all {|r| r.title == t[:name]}.length
+    - if @user.results.find_all {|r| r.title == t[:name]}.length > 0
+      = image_tag t[:image_path], size: '120'
+      %br
+      = t[:name]
+      %span :
+      = @user.results.find_all {|r| r.title == t[:name]}.length
+    - else
+      = image_tag "no_user.png", size: '120'
+      %br　？？？
+  %br
