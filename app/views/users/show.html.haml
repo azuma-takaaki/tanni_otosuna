@@ -9,14 +9,4 @@
   = button_to "ログアウトする", "/logout", method: :delete
 
 - @title_list.each do |t|
-  %div
-    - if @user.results.find_all {|r| r.title == t[:name]}.length > 0
-      = image_tag t[:image_path], size: '120'
-      %br
-      = t[:name]
-      %span :
-      = @user.results.find_all {|r| r.title == t[:name]}.length
-    - else
-      = image_tag "no_user.png", size: '120'
-      %br　？？？
-  %br
+  = react_component("TitleDetail", { title: t, count: @user.results.find_all {|r| r.title == t[:name]}.length})
