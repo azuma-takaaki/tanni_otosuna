@@ -38,21 +38,18 @@ export class Player extends SuperObject{
   }
 
 
-  update(keyboard) {
-    // ここでキーボード操作により座標を変更する
-    switch (keyboard) {
-      case 'ArrowUp':
-        this.y -= 5;
-        break;
-      case 'ArrowDown':
-        this.y += 5;
-        break;
-      case 'ArrowLeft':
-        this.x -= 5;
-        break;
-      case 'ArrowRight':
-        this.x += 5;
-        break;
+  update_position(keyboard) {
+    if (keyboard.includes("ArrowRight")){
+      this.x += 5;
+    }
+    if (keyboard.includes("ArrowLeft")){
+      this.x -= 5;
+    }
+    if (keyboard.includes("ArrowDown")){
+      this.y += 5;
+    }
+    if (keyboard.includes("ArrowUp")){
+      this.y -= 5;
     }
   }
 }

@@ -38,7 +38,7 @@ export class DropObject extends SuperObject{
     });
   }
 
-  update() {
+  update_position() {
     this.y += this.drop_speed;
   }
 }
