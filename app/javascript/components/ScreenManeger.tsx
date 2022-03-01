@@ -41,6 +41,23 @@ export class ScreenManeger {
   }
 
   setEventListener() {
+    //for smart phone
+    document.addEventListener('touchstart', (e: TouchEvent) => {
+      if (window.innerWidth/2 >= e.touches[0].clientX){
+        this.keyboard += "ArrowLeft"
+      }else{
+        this.keyboard += "ArrowRight"
+      }
+    });
+    document.addEventListener('touchend', (e: TouchEvent) => {
+      if (window.innerWidth/2 >= e.touches[0].clientX){
+        this.keyboard = this.keyboard.replaceAll("ArrowLeft", '')
+      }else{
+        this.keyboard = this.keyboard.replaceAll("ArrowRight", '')
+      }
+    });
+
+    //for browser
     window.addEventListener('keydown', e => {
       if (!this.keyboard.includes(e.key)) {
         this.keyboard += e.key
