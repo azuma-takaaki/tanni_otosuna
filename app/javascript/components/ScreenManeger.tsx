@@ -41,8 +41,25 @@ export class ScreenManeger {
   }
 
   setEventListener() {
-    window.addEventListener('keydown', e => { this.keyboard = e.key });
-    window.addEventListener('keyup', e => { this.keyboard = '' });
+    //for smart phone
+    document.addEventListener('touchstart', (e: TouchEvent) => {
+      if (window.innerWidth/2 >= e.touches[0].clientX){
+        this.keyboard = "ArrowLeft"
+      }else{
+        this.keyboard = "ArrowRight"
+      }
+    });
+    document.addEventListener('touchend', (e: TouchEvent) => {　
+      this.keyboard = ""
+    });
+
+    //for browser
+    window.addEventListener('keydown', e => {
+      if (!this.keyboard.includes(e.key)) {
+        this.keyboard += e.key
+      }
+    });
+    window.addEventListener('keyup', e => { this.keyboard = this.keyboard.replaceAll(e.key, '') });
   }
 
   update_objects(){
@@ -50,12 +67,12 @@ export class ScreenManeger {
       if (key == 'player'){
         const p = this.objects[key];
         p.y = this.canvas.height - p.height;
-        p.update(this.keyboard);
+        p.update_position(this.keyboard);
         this.ctx.drawImage(p.image, p.x, p.y, p.width , p.height)
       }else{
         for(let i  in this.objects[key]){
           const obj = this.objects[key][i]
-          obj.update();
+          obj.update_position();
           this.ctx.drawImage(obj.image, obj.x, obj.y, obj.width , obj.height)
           if(this.detectRectangleCollision(this.objects["player"], obj)){
             this.add_score(key)
@@ -108,7 +125,7 @@ export class ScreenManeger {
     this.update_objects()
     this.items.forEach(a => {
       a.draw(this.ctx, this.loadedAssets);
-      a.update(this.keyboard);
+      a.update_position(this.keyboard);
     })
 
 
