@@ -44,17 +44,13 @@ export class ScreenManeger {
     //for smart phone
     document.addEventListener('touchstart', (e: TouchEvent) => {
       if (window.innerWidth/2 >= e.touches[0].clientX){
-        this.keyboard += "ArrowLeft"
+        this.keyboard = "ArrowLeft"
       }else{
-        this.keyboard += "ArrowRight"
+        this.keyboard = "ArrowRight"
       }
     });
-    document.addEventListener('touchend', (e: TouchEvent) => {
-      if (window.innerWidth/2 >= e.touches[0].clientX){
-        this.keyboard = this.keyboard.replaceAll("ArrowLeft", '')
-      }else{
-        this.keyboard = this.keyboard.replaceAll("ArrowRight", '')
-      }
+    document.addEventListener('touchend', (e: TouchEvent) => {　
+      this.keyboard = ""
     });
 
     //for browser
